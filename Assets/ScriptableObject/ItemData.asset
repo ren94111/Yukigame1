@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: ItemData
   m_EditorClassIdentifier: Assembly-CSharp:Sora_Item:ItemData
-  createLimit: 0
-  createTime: 0
-  itemAddress: 
+  createLimit: 10
+  createTime: 2
+  itemAddress: test
