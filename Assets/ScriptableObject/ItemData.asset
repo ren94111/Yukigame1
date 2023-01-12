@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ItemData
   m_EditorClassIdentifier: Assembly-CSharp:Sora_Item:ItemData
   createLimit: 10
-  createTime: 2
+  createTime: 3
   itemAddress: test
