@@ -3,18 +3,25 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UniRx;
 using System;
+using System.Collections.Generic;
 
 namespace Sora_Item
 {
     public class ItemDataModel
     {
+        private static ReactiveProperty<int> itemValue = new(0);
+
         private ItemData data;
 
         private float createTime;
 
         private GameObject item;
 
-        private Subject<Unit> endCreate = new();
+        private static List<List<Transform>> itemObjectList = new(3);
+
+        private static Subject<Unit> endCreate = new();
+
+        public IObservable<int> GetItemValue => itemValue;
 
         public void Init(string address)
         {
@@ -49,12 +56,37 @@ namespace Sora_Item
             return createTime;
         }
 
+        public bool CheckSaveItem()
+        {
+            if(itemObjectList.Count == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public List<Transform> GetItemPosition(int callnum)
+        {
+            return itemObjectList[callnum];
+        }
+
         public GameObject GetItemObj()
         {
             return item;
         }
 
-        public void EndCreateDispose()
+        public void GetItem()
+        {
+            itemValue.Value += 1;
+        }
+
+        public static void SaveItemPos(int sceneNum, List<Transform> item)
+        {
+            itemObjectList[sceneNum].AddRange(item);
+        }
+
+        public static void EndCreateDispose()
         {
             endCreate.Dispose();
         }
@@ -62,34 +94,6 @@ namespace Sora_Item
         public IObservable<Unit> GetEndCreate()
         {
             return endCreate;
-        }
-    }
-
-    [CreateAssetMenu(fileName ="ItemData", menuName ="ScriptableObject/ItemData",order =1)]
-    public class ItemData : ScriptableObject
-    {
-        [SerializeField,Header("何個アイテムを生成しておくか")]
-        private int createLimit;
-
-        [SerializeField,Header("初期の生成時間")]
-        private float createTime;
-
-        [SerializeField,Header("アイテムのアドレス")]
-        private string itemAddress;
-
-        public int GetCreateLimit()
-        {
-            return createLimit;
-        }
-
-        public float GetCreateTime()
-        {
-            return createTime;
-        }
-
-        public string GetItemAddress()
-        {
-            return itemAddress;
         }
     }
 }

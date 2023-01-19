@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 035a96ed033afba4bbc980775b87f8ca, type: 3}
   m_Name: ItemData
-  m_EditorClassIdentifier: Assembly-CSharp:Sora_Item:ItemData
+  m_EditorClassIdentifier: 
   createLimit: 10
-  createTime: 3
+  createTime: 2
   itemAddress: test
