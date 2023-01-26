@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UniRx;
 
 namespace Sora_Building
 {
@@ -21,9 +17,9 @@ namespace Sora_Building
         }
 
         //’¼‚¹‚é‚È‚ç’¼‚·
-        public void RepairCheck()
+        public void RepairCheck(bool _check)
         {
-            if (buidingRepair.RepairCheck())
+            if (buidingRepair.RepairCheck(_check))
             {
                 controller.RepairBuilding();
             }

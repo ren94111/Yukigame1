@@ -1,5 +1,7 @@
 using UnityEngine;
 using Sora_Item;
+using UniRx;
+using System;
 
 namespace Sora_Building
 {
@@ -11,18 +13,41 @@ namespace Sora_Building
         [SerializeField]
         private GameObject repairBuilding;
 
-        private bool repairHistory = false;
+        private bool history = false;
+        private Subject<bool> repairHistory = new();
 
         private RepairPresenter presenter = new();
 
         private void Start()
         {
+            brokenBuilding.SetActive(true);
+            repairBuilding.SetActive(false);
             presenter.Inject(new BuildingRepair(new ItemDataModel()),this);
         }
 
         public void RepairBuilding()
         {
-            repairHistory = true;
+            history= true;
+            repairHistory.OnNext(true);
+            brokenBuilding.SetActive(false);
+            repairBuilding.SetActive(true);
+        }
+
+        public void BuildingDestroy()
+        {
+            repairHistory.OnNext(false);
+            brokenBuilding.SetActive(true);
+            repairBuilding.SetActive(false);
+        }
+
+        public void ClickThis()
+        {
+            presenter.RepairCheck(history);
+        }
+
+        public IObservable<bool> GetRepairHistory()
+        {
+            return repairHistory;
         }
     }
 }

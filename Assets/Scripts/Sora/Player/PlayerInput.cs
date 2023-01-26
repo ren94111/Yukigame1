@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Sora_Item;
+using Sora_Building;
 
 namespace Sora_PlayerInput
 {
@@ -21,6 +22,10 @@ namespace Sora_PlayerInput
                     if (hit.transform.CompareTag("Item"))
                     {
                         hit.transform.GetComponent<GetItem>().OnClickThis();
+                    }
+                    else if(hit.collider.CompareTag("Building"))
+                    {
+                        hit.transform.GetComponentInParent<BuildingController>().ClickThis();
                     }
                 }
             }
