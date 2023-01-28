@@ -74,6 +74,7 @@ namespace Sora_Item
 
         public void Repair(int value)
         {
+            Debug.Log(value + "////" + itemValue.Value);
             itemValue.Value -= value;
         }
 

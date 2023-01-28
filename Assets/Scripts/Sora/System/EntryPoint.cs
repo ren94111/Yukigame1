@@ -19,8 +19,9 @@ namespace Sora_System
 
         void Start()
         {
-            presenter.Inject(new ItemDataModel(), vew);
-            manager.Inject(new ResultModel());
+            IReadItemData item = new ItemDataModel();
+            presenter.Inject(item, vew);
+            manager.Inject(new ResultModel(), new BuildingRepair(item));
         }
     }
 }

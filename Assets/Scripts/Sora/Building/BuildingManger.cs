@@ -13,6 +13,7 @@ namespace Sora_Building
         private List<BuildingController> controllers;
 
         private IReadResult model;
+        private IReadBuidingRepair repair;
 
         private CompositeDisposable disposables = new();
         void Start()
@@ -23,11 +24,14 @@ namespace Sora_Building
             }
             for(int i = 0; i < controllers.Count; i++)
             {
+                int temp = i;
                 controllers[i].GetRepairHistory()
                     .Subscribe(flag => 
                     {
-                        Debug.Log(i);
-                        fiexdList[i] = flag; 
+                        Debug.Log("sisisis");
+                        repair.Repair();
+                        fiexdList[temp] = flag;
+                        CheckRepair();
                     })
                     .AddTo(disposables);
             }
@@ -50,9 +54,10 @@ namespace Sora_Building
             }
         }
 
-        public void Inject(IReadResult _model)
+        public void Inject(IReadResult _model,IReadBuidingRepair _repair)
         {
             model = _model;
+            repair = _repair;
         }
     }
 }

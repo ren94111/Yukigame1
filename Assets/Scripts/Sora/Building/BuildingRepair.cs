@@ -1,4 +1,5 @@
 using Sora_Item;
+using UnityEngine;
 
 namespace Sora_Building
 {
@@ -10,8 +11,8 @@ namespace Sora_Building
 
     public class BuildingRepair : IReadBuidingRepair
     {
-        private int requiredValue = 5;
-        private int addValue = 5;
+        private static int requiredValue = 5;
+        private static int addValue = 5;
 
         private IReadItemData dataModel;
 
@@ -35,6 +36,7 @@ namespace Sora_Building
 
         public void Repair()
         {
+            Debug.Log("aaaa");
             dataModel.Repair(requiredValue);
             requiredValue += addValue;
         }

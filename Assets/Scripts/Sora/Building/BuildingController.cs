@@ -27,15 +27,16 @@ namespace Sora_Building
 
         public void RepairBuilding()
         {
-            history= true;
-            repairHistory.OnNext(true);
+            history = true;
+            repairHistory.OnNext(history);
             brokenBuilding.SetActive(false);
             repairBuilding.SetActive(true);
         }
 
         public void BuildingDestroy()
         {
-            repairHistory.OnNext(false);
+            history = false;
+            repairHistory.OnNext(history);
             brokenBuilding.SetActive(true);
             repairBuilding.SetActive(false);
         }
