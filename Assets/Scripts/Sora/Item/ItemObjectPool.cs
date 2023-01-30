@@ -6,18 +6,12 @@ namespace Sora_Item
     public class ItemObjectPool : MonoBehaviour
     {
         private List<GameObject> objectPoolList = new(10);
+
         public void Create(GameObject createObj,ItemController _controller)
         {
             GameObject obj = Instantiate(createObj);
             obj.SetActive(false);
-            if (obj.GetComponent<GetItem>())
-            {
-                obj.GetComponent<GetItem>().Init(_controller);
-            }
-            else
-            {
-                obj.AddComponent<GetItem>().Init(_controller);
-            }
+            obj.GetComponentInChildren<GetItem>().Init(_controller);
             obj.transform.parent = transform;
             objectPoolList.Add(obj);
         }

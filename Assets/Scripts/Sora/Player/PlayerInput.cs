@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Sora_Item;
+using Sora_Building;
 
 namespace Sora_PlayerInput
 {
@@ -10,15 +11,22 @@ namespace Sora_PlayerInput
 
         public void GetMousePos(InputAction.CallbackContext context)
         {
-            mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
-            RaycastHit2D hit;
-
-            if (Physics2D.Raycast(mousePos, out hit,100))
+            if (context.started)
             {
-                if (hit.transform.CompareTag("Item"))
+                //mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction, 100);
+
+                if (hit.collider)
                 {
-                    hit.transform.GetComponent<GetItem>().OnClickThis();
+                    if (hit.transform.CompareTag("Item"))
+                    {
+                        hit.transform.GetComponent<GetItem>().OnClickThis();
+                    }
+                    else if(hit.collider.CompareTag("Building"))
+                    {
+                        hit.transform.GetComponentInParent<BuildingController>().ClickThis();
+                    }
                 }
             }
         }

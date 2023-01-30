@@ -17,16 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 048763d2e8879fa48b6f9baf14bf369d
   m_SerializeEntries:
-  - m_GUID: 1fd3140d5d833c0418d8b6f63c1909ce
-    m_Address: test
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 1178a15ce7d2a5c45b83eb8443f5bc73
     m_Address: Assets/Prefabs
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: a97eb8d425ff892408bc3b63e13e4240
     m_Address: ItemData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1fd3140d5d833c0418d8b6f63c1909ce
+    m_Address: test
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

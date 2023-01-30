@@ -7,11 +7,16 @@ using System.Collections.Generic;
 
 namespace Sora_Item
 {
-    public class ItemDataModel
+    public interface IReadItemData
+    {
+        IObservable<int> GetItemValue();
+        bool BuildingRepairCheck(int requiredValue);
+        void Repair(int value);
+    }
+
+    public class ItemDataModel : IReadItemData
     {
         private static ReactiveProperty<int> itemValue = new(0);
-
-        private ItemData data;
 
         private float createTime;
 
@@ -21,7 +26,7 @@ namespace Sora_Item
 
         private static Subject<Unit> endCreate = new();
 
-        public IObservable<int> GetItemValue => itemValue;
+        private ItemData data;
 
         public void Init(string address)
         {
@@ -66,6 +71,20 @@ namespace Sora_Item
             return true;
         }
 
+        public void Repair(int value)
+        {
+            itemValue.Value -= value;
+        }
+
+        public bool BuildingRepairCheck(int requiredValue)
+        {
+            if(requiredValue > itemValue.Value)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public List<Transform> GetItemPosition(int callnum)
         {
             return itemObjectList[callnum];
@@ -94,6 +113,11 @@ namespace Sora_Item
         public IObservable<Unit> GetEndCreate()
         {
             return endCreate;
+        }
+
+        public IObservable<int> GetItemValue()
+        {
+            return itemValue;
         }
     }
 }
