@@ -9,6 +9,8 @@ namespace Other_System
         private float limit;
         private float count = 0;
 
+        private bool timeCheck = true;
+
         private Subject<Unit> endTimer = new();
 
         private CompositeDisposable disposables = new();
@@ -19,10 +21,15 @@ namespace Other_System
             Observable.EveryUpdate()
                 .Subscribe(_ =>
                 {
+                    if(count == 0)
+                    {
+                        timeCheck = true;
+                    }
                     count += Time.deltaTime;
-                    if (count >= limit)
+                    if ((count >= limit) && timeCheck)
                     {
                         endTimer.OnNext(Unit.Default);
+                        timeCheck = false;
                     }
                 }).AddTo(disposables);
         }
@@ -35,6 +42,12 @@ namespace Other_System
         public void RestartTimer()
         {
             count = 0;
+            timeCheck = true;
+        }
+
+        public void StopTimer()
+        {
+            timeCheck = false;
         }
 
         public void EndTimer()

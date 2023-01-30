@@ -25,6 +25,7 @@ namespace Sora_Building
             presenter.Inject(new BuildingRepair(new ItemDataModel()),this);
         }
 
+        //建物を直して直したという履歴を残す
         public void RepairBuilding()
         {
             history = true;
@@ -33,14 +34,15 @@ namespace Sora_Building
             repairBuilding.SetActive(true);
         }
 
+        //建物を壊す
         public void BuildingDestroy()
         {
-            history = false;
-            repairHistory.OnNext(history);
+            repairHistory.OnNext(false);
             brokenBuilding.SetActive(true);
             repairBuilding.SetActive(false);
         }
 
+        //クリックされた時の処理
         public void ClickThis()
         {
             presenter.RepairCheck(history);

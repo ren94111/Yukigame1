@@ -18,8 +18,6 @@ namespace Sora_Item
     {
         private static ReactiveProperty<int> itemValue = new(0);
 
-        private ItemData data;
-
         private float createTime;
 
         private GameObject item;
@@ -28,6 +26,7 @@ namespace Sora_Item
 
         private static Subject<Unit> endCreate = new();
 
+        private ItemData data;
 
         public void Init(string address)
         {
@@ -74,7 +73,6 @@ namespace Sora_Item
 
         public void Repair(int value)
         {
-            Debug.Log(value + "////" + itemValue.Value);
             itemValue.Value -= value;
         }
 

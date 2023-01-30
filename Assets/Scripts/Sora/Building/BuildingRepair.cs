@@ -6,6 +6,7 @@ namespace Sora_Building
     public interface IReadBuidingRepair
     {
         bool RepairCheck(bool _fixed);
+        bool InterseptCheck(int _value);
         void Repair();
     }
 
@@ -34,9 +35,13 @@ namespace Sora_Building
             }
         }
 
+        public bool InterseptCheck(int _value)
+        {
+            return dataModel.BuildingRepairCheck(_value);
+        }
+
         public void Repair()
         {
-            Debug.Log("aaaa");
             dataModel.Repair(requiredValue);
             requiredValue += addValue;
         }

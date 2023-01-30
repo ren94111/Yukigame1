@@ -6,6 +6,7 @@ namespace Sora_Item
     public class ItemObjectPool : MonoBehaviour
     {
         private List<GameObject> objectPoolList = new(10);
+
         public void Create(GameObject createObj,ItemController _controller)
         {
             GameObject obj = Instantiate(createObj);
