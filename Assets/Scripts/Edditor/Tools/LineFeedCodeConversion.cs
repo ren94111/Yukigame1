@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -86,4 +85,3 @@ namespace Mytool
         }
     }
 }
-#endif

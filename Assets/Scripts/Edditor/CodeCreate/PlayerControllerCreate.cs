@@ -3,45 +3,47 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-public class PlayerControllerCreate : EditorWindow
+namespace CreateCode
 {
-    private string scriptName = "PlayerController";
-    private string createPath = "Assets/Scripts/";
-
-    [MenuItem("CreateCode/PlayerController")]
-    private static void ShowWindow()
+    public class PlayerControllerCreate : EditorWindow
     {
-        PlayerControllerCreate window = GetWindow<PlayerControllerCreate>();
-        window.titleContent = new GUIContent("CreateMenu");
-    }
+        private string scriptName = "PlayerController";
+        private string createPath = "Assets/Scripts/";
 
-    private void OnGUI()
-    {
-        GUILayout.Label("スクリプト名を入力してください");
-        scriptName = EditorGUILayout.TextField(scriptName, GUILayout.Height(20));
-
-        GUILayout.Label("以下の場所に生成されます");
-        GUILayout.Label(createPath + scriptName + ".cs");
-
-        if (GUILayout.Button("スクリプト生成"))
+        [MenuItem("CreateCode/PlayerController")]
+        private static void ShowWindow()
         {
-            CreateCode();
+            PlayerControllerCreate window = GetWindow<PlayerControllerCreate>();
+            window.titleContent = new GUIContent("CreateMenu");
         }
-    }
 
-    private void CreateCode()
-    {
-        string filePath = createPath + scriptName + ".cs";
-        filePath = AssetDatabase.GenerateUniqueAssetPath(filePath);
-        File.WriteAllText(filePath, SetCode());
-        AssetDatabase.Refresh();
-        Debug.Log("生成終了");
-    }
+        private void OnGUI()
+        {
+            GUILayout.Label("スクリプト名を入力してください");
+            scriptName = EditorGUILayout.TextField(scriptName, GUILayout.Height(20));
 
-    private string SetCode()
-    {
-        string code;
-        code = @"using UnityEngine;
+            GUILayout.Label("以下の場所に生成されます");
+            GUILayout.Label(createPath + scriptName + ".cs");
+
+            if (GUILayout.Button("スクリプト生成"))
+            {
+                CreateCode();
+            }
+        }
+
+        private void CreateCode()
+        {
+            string filePath = createPath + scriptName + ".cs";
+            filePath = AssetDatabase.GenerateUniqueAssetPath(filePath);
+            File.WriteAllText(filePath, SetCode());
+            AssetDatabase.Refresh();
+            Debug.Log("生成終了");
+        }
+
+        private string SetCode()
+        {
+            string code;
+            code = @"using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -91,7 +93,8 @@ public class PlayerController : MonoBehaviour
     }
 }
 ";
-        return code;
+            return code;
+        }
     }
 }
 #endif

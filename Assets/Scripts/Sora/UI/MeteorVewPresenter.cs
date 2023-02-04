@@ -13,14 +13,14 @@ namespace Sora_UI
             vew = _meteorVew;
             manager = _manager;
 
-            //è¦Î‚ª~‚Á‚Ä‚«‚½‚ç
+            //éš•çŸ³ãŒé™ã£ã¦ããŸã‚‰
             manager.GetMeteorFlag()
                 .Subscribe(_ =>
                 {
                     vew.OpneWindow(manager.GetMeteorAttackValue());
                 });
 
-            //‚Í‚¢‚©‚¢‚¢‚¦‚Ìƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚ç
+            //ã¯ã„ã‹ã„ã„ãˆã®ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰
             vew.GetInterseptFlag()
                 .Subscribe(x =>
                 {
@@ -28,7 +28,7 @@ namespace Sora_UI
                     manager.Broken(x);
                 });
 
-            //è¦Î‚ªŒ}Œ‚‚Å‚«‚½‚©‚ÌŠm”FƒeƒLƒXƒg
+            //éš•çŸ³ãŒè¿Žæ’ƒã§ããŸã‹ã®ç¢ºèªãƒ†ã‚­ã‚¹ãƒˆ
             manager.GetMeteorRezult()
                 .Subscribe(x =>
                 {

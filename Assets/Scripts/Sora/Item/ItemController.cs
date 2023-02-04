@@ -12,7 +12,7 @@ namespace Sora_Item
         private int sceneNam = 0;
 
         [SerializeField, Header("生成場所")]
-        private Transform createPos;
+        private List<Transform> createPos = new();
 
         [SerializeField,Header("ItemDataのスクリプタブルオブジェクトのアドレス")]
         private string scriptableAddress;
@@ -39,7 +39,8 @@ namespace Sora_Item
         {
             if (pool.CheckPoolList())
             {
-                items.Add(pool.GetCreateObj(createPos));
+                int index = UnityEngine.Random.Range(0, items.Count);
+                items.Add(pool.GetCreateObj(createPos[index]));
             }
             timer.RestartTimer();
         }
@@ -50,7 +51,7 @@ namespace Sora_Item
             {
                 pool.Create(model.GetItemObj(),this);
             }
-            ItemDataModel.EndCreateDispose();
+            model.EndCreateDispose();
             if (model.CheckSaveItem())
             {
                 for (int i = 0; i < model.GetItemPosition(sceneNam).Count; i++)
@@ -68,16 +69,16 @@ namespace Sora_Item
             getItemCheck.OnNext(Unit.Default);
         }
 
-        public void SaveObjPos()
-        {
-            List<Transform> temppos = new List<Transform>(10);
-            for(int i = 0; i < items.Count; i++)
-            {
-                temppos.Add(items[i].transform);
-            }
+        // public void SaveObjPos()
+        // {
+        //     List<Transform> temppos = new List<Transform>(10);
+        //     for(int i = 0; i < items.Count; i++)
+        //     {
+        //         temppos.Add(items[i].transform);
+        //     }
 
-            ItemDataModel.SaveItemPos(sceneNam, temppos);
-        }
+        //     ItemDataModel.SaveItemPos(sceneNam, temppos);
+        // }
 
         public string GetScriptableAddress()
         {
