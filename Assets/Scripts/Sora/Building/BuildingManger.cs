@@ -28,11 +28,11 @@ namespace Sora_Building
 
         void Start()
         {
-            for(int i = 0; i < controllers.Count; i++)
+            for (int i = 0; i < controllers.Count; i++)
             {
                 fiexdList.Add(false);
             }
-            for(int i = 0; i < controllers.Count; i++)
+            for (int i = 0; i < controllers.Count; i++)
             {
                 int temp = i;
                 controllers[i].GetRepairHistory()
@@ -66,13 +66,13 @@ namespace Sora_Building
 
             meteorCheck.Value = existingCheck;
 
-            if(temp)
+            if (temp)
             {
                 model.GameClear();
             }
         }
 
-        //ターゲットの選別
+        //?ｿｽ^?ｿｽ[?ｿｽQ?ｿｽb?ｿｽg?ｿｽﾌ選?ｿｽ?ｿｽ
         public void Brokenbuild(int _meteorValue)
         {
             int random = Random.Range(0, controllers.Count);
@@ -101,7 +101,12 @@ namespace Sora_Building
             }
         }
 
-        public void Inject(IReadResult _model,IReadBuidingRepair _repair)
+        public void Dispose()
+        {
+            disposables.Dispose();
+        }
+
+        public void Inject(IReadResult _model, IReadBuidingRepair _repair)
         {
             model = _model;
             repair = _repair;

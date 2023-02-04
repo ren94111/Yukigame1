@@ -2,45 +2,47 @@
 using UnityEditor;
 using UnityEngine;
 using System.IO;
-    
-public class ObjectPoolCreateCode : EditorWindow
+
+namespace CreateCode
 {
-    private string variableName = "ObjectPoolManager";
-    private string createPath = "Assets/Scripts/";
-
-    [MenuItem("CreateCode/ObjectPoolManager")]
-    private static void ShowWindow()
+    public class ObjectPoolCreateCode : EditorWindow
     {
-        ObjectPoolCreateCode window = GetWindow<ObjectPoolCreateCode>();
-        window.titleContent = new GUIContent("CraeteMenu");
-    }
+        private string variableName = "ObjectPoolManager";
+        private string createPath = "Assets/Scripts/";
 
-    private void OnGUI()
-    {
-        GUILayout.Label("スクリプト名を入力してください");
-        variableName = EditorGUILayout.TextField(variableName, GUILayout.Height(20));
-        
-        GUILayout.Label("以下の場所に生成されます");
-        GUILayout.Label(createPath + variableName + ".cs");
-        
-        if (GUILayout.Button("スクリプト生成"))
+        [MenuItem("CreateCode/ObjectPoolManager")]
+        private static void ShowWindow()
         {
-            CraeteCode();
+            ObjectPoolCreateCode window = GetWindow<ObjectPoolCreateCode>();
+            window.titleContent = new GUIContent("CraeteMenu");
         }
-    }
 
-    private void CraeteCode()
-    {
-        string filepath = createPath + variableName + ".cs";
-        filepath = AssetDatabase.GenerateUniqueAssetPath(filepath);
-        File.WriteAllText(filepath, SetCode());
-        AssetDatabase.Refresh();
-        Debug.Log(filepath);
-    }
+        private void OnGUI()
+        {
+            GUILayout.Label("スクリプト名を入力してください");
+            variableName = EditorGUILayout.TextField(variableName, GUILayout.Height(20));
 
-    private string SetCode()
-    {
-        string code = @"
+            GUILayout.Label("以下の場所に生成されます");
+            GUILayout.Label(createPath + variableName + ".cs");
+
+            if (GUILayout.Button("スクリプト生成"))
+            {
+                CraeteCode();
+            }
+        }
+
+        private void CraeteCode()
+        {
+            string filepath = createPath + variableName + ".cs";
+            filepath = AssetDatabase.GenerateUniqueAssetPath(filepath);
+            File.WriteAllText(filepath, SetCode());
+            AssetDatabase.Refresh();
+            Debug.Log(filepath);
+        }
+
+        private string SetCode()
+        {
+            string code = @"
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -75,7 +77,8 @@ public class " + variableName + @" : MonoBehaviour
     }
 }";
 
-        return code;
+            return code;
+        }
     }
 }
 #endif

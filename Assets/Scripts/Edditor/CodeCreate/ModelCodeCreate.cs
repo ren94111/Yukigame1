@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using System.IO;
 
-namespace CreateCode_ModelCodeCreate
+namespace CreateCode
 {
-    public enum variableType
+    public enum ModelvariableType
     {
         None = 0,
         Int = 1 << 0,
@@ -25,7 +25,7 @@ namespace CreateCode_ModelCodeCreate
         private string presenterScriptName = "ModelPresenter";
         private string createPath = "Assets/Scripts/";
 
-        private variableType variable;
+        private ModelvariableType variable;
 
         private int[] selectValue = new int[8];
 
@@ -56,7 +56,7 @@ namespace CreateCode_ModelCodeCreate
             GUILayout.Label("Presenter：" + createPath + presenterScriptName + ".cs");
 
             //enumをポップアップで複数選択
-            variable = (variableType)EditorGUILayout.EnumFlagsField("変数タイプ", variable);
+            variable = (ModelvariableType)EditorGUILayout.EnumFlagsField("変数タイプ", variable);
 
             //生成数の調整
             #region

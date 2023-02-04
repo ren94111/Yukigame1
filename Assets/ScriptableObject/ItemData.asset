@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createLimit: 10
   createTime: 2
-  itemAddress: test
+  itemAddress: Item

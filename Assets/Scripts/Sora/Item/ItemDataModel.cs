@@ -22,9 +22,9 @@ namespace Sora_Item
 
         private GameObject item;
 
-        private static List<List<Transform>> itemObjectList = new(3);
+        private List<List<Transform>> itemObjectList = new(3);
 
-        private static Subject<Unit> endCreate = new();
+        private Subject<Unit> endCreate = new();
 
         private ItemData data;
 
@@ -48,7 +48,6 @@ namespace Sora_Item
                     };
                 }
             };
-
         }
 
         public int GetCreateLimit()
@@ -63,7 +62,7 @@ namespace Sora_Item
 
         public bool CheckSaveItem()
         {
-            if(itemObjectList.Count == 0)
+            if (itemObjectList.Count == 0)
             {
                 return false;
             }
@@ -78,7 +77,7 @@ namespace Sora_Item
 
         public bool BuildingRepairCheck(int requiredValue)
         {
-            if(requiredValue > itemValue.Value)
+            if (requiredValue > itemValue.Value)
             {
                 return false;
             }
@@ -100,12 +99,12 @@ namespace Sora_Item
             itemValue.Value += 1;
         }
 
-        public static void SaveItemPos(int sceneNum, List<Transform> item)
+        public void SaveItemPos(int sceneNum, List<Transform> item)
         {
             itemObjectList[sceneNum].AddRange(item);
         }
 
-        public static void EndCreateDispose()
+        public void EndCreateDispose()
         {
             endCreate.Dispose();
         }

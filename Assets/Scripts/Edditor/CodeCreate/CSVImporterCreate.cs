@@ -1,11 +1,10 @@
-#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-namespace CreateCode_CSVImporterCreate
+namespace CreateCode
 {
-    public enum variableType
+    public enum CSVvariableType
     {
         None = 0,
         GetInt = 1 << 0,
@@ -18,7 +17,7 @@ namespace CreateCode_CSVImporterCreate
         private string codeName = "CSVImporter";
         private string createPath = "Assets/Scripts/";
 
-        private variableType variable;
+        private CSVvariableType variable;
 
         [MenuItem("CreateCode/CSVImporter"), MenuItem("Assets/CreateCode/CSVImporter")]
         private static void ShowWindow()
@@ -34,7 +33,7 @@ namespace CreateCode_CSVImporterCreate
             GUILayout.Label("以下の場所に生成されます");
             GUILayout.Label(createPath + codeName + ".cs");
 
-            variable = (variableType)EditorGUILayout.EnumFlagsField("Getメソッド関数type", variable);
+            variable = (CSVvariableType)EditorGUILayout.EnumFlagsField("Getメソッド関数type", variable);
 
             GUILayout.Label("UniRxとAddresableAssetを入れないとエラーが出ます");
 
@@ -163,4 +162,3 @@ public class " + codeName + @"
         }
     }
 }
-#endif

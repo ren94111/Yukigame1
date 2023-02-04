@@ -6,7 +6,7 @@ namespace Sora_System
     public interface IReadResult
     {
         void GameClear();
-        IObservable<Unit> GetGameOver();
+        IObservable<Unit> GetGameClear();
     }
 
     public class ResultModel : IReadResult
@@ -18,7 +18,7 @@ namespace Sora_System
             gameClear.OnNext(Unit.Default);
         }
 
-        public IObservable<Unit> GetGameOver()
+        public IObservable<Unit> GetGameClear()
         {
             return gameClear;
         }

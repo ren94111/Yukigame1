@@ -9,20 +9,17 @@ namespace Sora_UI
 {
     public class MeteorVew : MonoBehaviour
     {
-        [SerializeField, Header("è¦Î‚ÌŒ}Œ‚ƒEƒCƒ“ƒhƒE")]
+        [SerializeField, Header("éš•çŸ³ã®è¿æ’ƒã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦")]
         private GameObject meteorWindow;
 
-        [SerializeField, Header("è¦ÎŒ}Œ‚ƒ{ƒ^ƒ“")]
+        [SerializeField, Header("éš•çŸ³è¿æ’ƒãƒœã‚¿ãƒ³")]
         private Button interseptButton;
 
-        [SerializeField, Header("è¦ÎŒ}Œ‚‚µ‚È‚¢ƒ{ƒ^ƒ“")]
+        [SerializeField, Header("éš•çŸ³è¿æ’ƒã—ãªã„ãƒœã‚¿ãƒ³")]
         private Button notInterseptButton;
 
-        [SerializeField, Header("•K—vƒAƒCƒeƒ€”‚ÌƒeƒLƒXƒg")]
+        [SerializeField, Header("å¿…è¦ã‚¢ã‚¤ãƒ†ãƒ æ•°ã®ãƒ†ã‚­ã‚¹ãƒˆ")]
         private TextMeshProUGUI interseptText;
-
-        [SerializeField, Header("Œ}Œ‚‚Å‚«‚½‚©‚ÌŠm”FText")]
-        private TextMeshProUGUI meteorRezult;
 
         private TimerModel timer = new();
 
@@ -41,21 +38,20 @@ namespace Sora_UI
             notInterseptButton.OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                        interseptFlag.OnNext(false);
+                    interseptFlag.OnNext(false);
                 }).AddTo(disposables);
 
             meteorWindow.SetActive(false);
-            meteorRezult.gameObject.SetActive(false);
             timer.SetTimer(3f);
-            timer.GetEndTimer()
-                .Subscribe(_ => meteorRezult.gameObject.SetActive(false))
-                .AddTo(disposables);
+            // timer.GetEndTimer()
+            //     .Subscribe(_ => meteorRezult.gameObject.SetActive(false))
+            //     .AddTo(disposables);
         }
 
         public void OpneWindow(int attackValue)
         {
             meteorWindow.SetActive(true);
-            interseptText.text = "”j‰ó—Í" + attackValue + "‚Ìè¦Î‚ª—‚¿‚Ä‚«‚Ü‚µ‚½";
+            interseptText.text = "ç ´å£ŠåŠ›" + attackValue + "ã®éš•çŸ³ãŒè½ã¡ã¦ãã¾ã—ãŸ";
         }
 
         public void CloseWindow()
@@ -66,15 +62,15 @@ namespace Sora_UI
         public void RezultText(bool _rezult)
         {
             timer.RestartTimer();
-            meteorRezult.gameObject.SetActive(true);
-            if (_rezult)
-            {
-                meteorRezult.text = "è¦Î‚ğŒ}Œ‚‚µ‚Ü‚µ‚½";
-            }
-            else
-            {
-                meteorRezult.text = "è¦Î‚ğŒ}Œ‚‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½";
-            }
+            // meteorRezult.gameObject.SetActive(true);
+            // if (_rezult)
+            // {
+            //     meteorRezult.text = "éš•çŸ³ã‚’è¿æ’ƒã—ã¾ã—ãŸ";
+            // }
+            // else
+            // {
+            //     meteorRezult.text = "éš•çŸ³ã‚’è¿æ’ƒã§ãã¾ã›ã‚“ã§ã—ãŸ";
+            // }
         }
 
         public IObservable<bool> GetInterseptFlag()

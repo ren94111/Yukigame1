@@ -25,8 +25,8 @@ MonoBehaviour:
     m_Address: ItemData
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 1fd3140d5d833c0418d8b6f63c1909ce
-    m_Address: test
+  - m_GUID: 32184ca75b005a246b08599cf850af90
+    m_Address: Item
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
