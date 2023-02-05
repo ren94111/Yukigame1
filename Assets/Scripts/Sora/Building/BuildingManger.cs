@@ -72,7 +72,7 @@ namespace Sora_Building
             }
         }
 
-        //?¿½^?¿½[?¿½Q?¿½b?¿½g?¿½Ì‘I?¿½?¿½
+        //?ï¿½ï¿½^?ï¿½ï¿½[?ï¿½ï¿½Q?ï¿½ï¿½b?ï¿½ï¿½g?ï¿½ï¿½Ì‘I?ï¿½ï¿½?ï¿½ï¿½
         public void Brokenbuild(int _meteorValue)
         {
             int random = Random.Range(0, controllers.Count);
@@ -93,6 +93,7 @@ namespace Sora_Building
             if (_check && repair.InterseptCheck(meteorAttackValue))
             {
                 meteorRezult.OnNext(true);
+                repair.MeteorIntersept(meteorAttackValue);
             }
             else
             {

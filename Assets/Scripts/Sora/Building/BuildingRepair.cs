@@ -1,5 +1,4 @@
 using Sora_Item;
-using UnityEngine;
 
 namespace Sora_Building
 {
@@ -7,6 +6,7 @@ namespace Sora_Building
     {
         bool RepairCheck(bool _fixed);
         bool InterseptCheck(int _value);
+        void MeteorIntersept(int _value);
         void Repair();
     }
 
@@ -38,6 +38,11 @@ namespace Sora_Building
         public bool InterseptCheck(int _value)
         {
             return dataModel.BuildingRepairCheck(_value);
+        }
+
+        public void MeteorIntersept(int _value)
+        {
+            dataModel.Repair(_value);
         }
 
         public void Repair()
