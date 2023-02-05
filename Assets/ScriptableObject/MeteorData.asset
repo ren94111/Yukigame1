@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0241fcd2436ee9a438fdb114425f8335, type: 3}
   m_Name: MeteorData
   m_EditorClassIdentifier: 
-  firstTime: 5
-  minTime: 10
-  maxTime: 15
+  firstTime: 15
+  minTime: 15
+  maxTime: 18

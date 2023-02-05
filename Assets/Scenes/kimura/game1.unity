@@ -1183,10 +1183,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3613006030197534432, guid: 783f5b12c83e24c4dafb2fbab50cbd70, type: 3}
+      propertyPath: m_text
+      value: '00
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 6625667942459869434, guid: 783f5b12c83e24c4dafb2fbab50cbd70, type: 3}
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7430079526793903657, guid: 783f5b12c83e24c4dafb2fbab50cbd70, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6cdaae799ae57c140a73a78778262180, type: 2}
+    - target: {fileID: 7430079526793903657, guid: 783f5b12c83e24c4dafb2fbab50cbd70, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2409435828762642173, guid: 6cdaae799ae57c140a73a78778262180, type: 2}
+    - target: {fileID: 7430079526841976837, guid: 783f5b12c83e24c4dafb2fbab50cbd70, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6cdaae799ae57c140a73a78778262180, type: 2}
+    - target: {fileID: 7430079526841976837, guid: 783f5b12c83e24c4dafb2fbab50cbd70, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2409435828762642173, guid: 6cdaae799ae57c140a73a78778262180, type: 2}
+    - target: {fileID: 7430079527292366996, guid: 783f5b12c83e24c4dafb2fbab50cbd70, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6cdaae799ae57c140a73a78778262180, type: 2}
+    - target: {fileID: 7430079527292366996, guid: 783f5b12c83e24c4dafb2fbab50cbd70, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2409435828762642173, guid: 6cdaae799ae57c140a73a78778262180, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783f5b12c83e24c4dafb2fbab50cbd70, type: 3}
 --- !u!1 &1581883471
