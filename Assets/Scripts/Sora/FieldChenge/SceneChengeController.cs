@@ -14,6 +14,7 @@ namespace Sora_Field
             {
                 sceneCameras[i].gameObject.SetActive(false);
             }
+            sceneCameras[0].gameObject.SetActive(true);
         }
         public void ChengeCamera(int _camera)
         {
