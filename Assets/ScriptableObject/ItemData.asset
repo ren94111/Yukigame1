@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ItemData
   m_EditorClassIdentifier: 
   createLimit: 10
-  createTime: 1
+  createTime: 0.1
   itemAddress: Item
