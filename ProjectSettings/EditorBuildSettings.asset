@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/kimura/end.unity
+    guid: 9727ce385a61a764e9161b2f509161a7
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 2ec98ec78c65e734ca523cc70ce916c0, type: 2}

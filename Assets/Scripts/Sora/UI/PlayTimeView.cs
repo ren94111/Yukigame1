@@ -25,8 +25,9 @@ public class PlayTimeView : MonoBehaviour
 
     private void nextTime(){
         nowSeondTime++;
-        if(nowSeondTime > 60){
+        if(nowSeondTime > 59){
             nowMinitTime ++;
+            nowSeondTime=0;
         }
         timeText.text = nowMinitTime.ToString().PadLeft(2,'0') + "：" + nowSeondTime.ToString().PadLeft(2,'0');
         timer.RestartTimer();
