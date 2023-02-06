@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MeteorData
   m_EditorClassIdentifier: 
   firstTime: 15
-  minTime: 15
-  maxTime: 18
+  minTime: 80
+  maxTime: 200
