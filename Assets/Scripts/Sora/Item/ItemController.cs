@@ -89,5 +89,9 @@ namespace Sora_Item
         {
             return getItemCheck.AddTo(disposables);
         }
+        private void OnDestroy()
+        {
+            disposables.Dispose();
+        }
     }
 }
