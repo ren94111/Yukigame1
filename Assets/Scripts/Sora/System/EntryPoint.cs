@@ -36,17 +36,19 @@ namespace Sora_System
         private MeteorModelPresenter meteorPresenter = new();
         private MeteorVewPresenter meteorVewPresenter = new();
 
+        private MeteorModel meteorModel;
         private SceneChengePresenter sceneChengePresenter = new();
         private SceneMangerPresenter sceneMangerPresenter = new();
         private SceneChengeControllerPresenter sceneChengeControllerPresenter = new();
 
         void Start()
         {
+            meteorModel = new MeteorModel(obj);
             IReadItemData item = new ItemDataModel();
             IReadSceneChaege sceneChenge = new SceneChenge();
             presenter.Inject(item, vew);
             manager.Inject(new ResultModel(), new BuildingRepair(item));
-            meteorPresenter.Inject(manager, new MeteorModel(obj));
+            meteorPresenter.Inject(manager, meteorModel);
             meteorVewPresenter.Inject(meteorVew, manager);
             sceneChengePresenter.Inject(sceneChenge, sceneChengeView);
             sceneChengeControllerPresenter.Inject(sceneChenge, sceneChengeController);
@@ -59,6 +61,7 @@ namespace Sora_System
             sceneChengePresenter.Dispose();
             sceneChengeControllerPresenter.Dispose();
             sceneMangerPresenter.Dispose();
+            meteorModel.EndTimer();
         }
     }
 }
