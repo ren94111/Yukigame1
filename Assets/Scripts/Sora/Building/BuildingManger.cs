@@ -113,6 +113,11 @@ namespace Sora_Building
             repair = _repair;
         }
 
+        private void OnDestroy() {
+            disposables.Dispose();
+            
+        }
+
         public int GetMeteorAttackValue()
         {
             return meteorAttackValue;
